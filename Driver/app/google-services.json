@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "440657394065",
+    "firebase_url": "https://claysyscabdriver-1487227135716.firebaseio.com",
+    "project_id": "claysyscabdriver-1487227135716",
+    "storage_bucket": "claysyscabdriver-1487227135716.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:440657394065:android:21f99d2897a375f6",
+        "android_client_info": {
+          "package_name": "com.launcher.mummu.driver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "440657394065-leqsdkriehu0soffaq1hsigg41uf36ou.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKo3mZXhX2hCSNbCKI4JAejs6W2plI_mg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
