@@ -132,18 +132,25 @@ public class MainActivity extends Container implements OnMapReadyCallback, GPSSe
     public void onLocationChanged(Location location) {
         googleMap.clear();
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-        MarkerOptions here = new MarkerOptions().position(latLng).title("Here").icon(BitmapDescriptorFactory.defaultMarker());
-        googleMap.addMarker(here);
-        sendToServer(location);
+
+//        googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+//            @Override
+//            public void onMapClick(LatLng latLng) {
+//                sendToServer(latLng);
+//            }
+//        });
+        sendToServer(latLng);
 
     }
 
-    private void sendToServer(Location location) {
+    private void sendToServer(LatLng location) {
+        MarkerOptions here = new MarkerOptions().position(location).title("Here").icon(BitmapDescriptorFactory.defaultMarker());
+        googleMap.addMarker(here);
         FirebaseDatabase firebaseInstance = DriverApp.getFirebaseInstance();
         DatabaseReference referenceFromUrl = firebaseInstance.getReferenceFromUrl(FireBaseUtils.FIREBASE_URL);
         DatabaseReference main = referenceFromUrl.child(FireBaseUtils.MAIN_TAG);
         DatabaseReference locationMain = main.child(FireBaseUtils.LOCATION_TAG);
-        locationMain.child(FireBaseUtils.LATITUDE_TAG).setValue(location.getLatitude());
-        locationMain.child(FireBaseUtils.LONGITUDE_TAG).setValue(location.getLongitude());
+        locationMain.child(FireBaseUtils.LATITUDE_TAG).setValue(location.latitude);
+        locationMain.child(FireBaseUtils.LONGITUDE_TAG).setValue(location.longitude);
     }
 }
