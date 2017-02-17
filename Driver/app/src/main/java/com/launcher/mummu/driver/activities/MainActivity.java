@@ -26,11 +26,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.launcher.mummu.driver.DriverApp;
 import com.launcher.mummu.driver.R;
+import com.launcher.mummu.driver.UIUtils.FireBaseUtils;
 import com.launcher.mummu.driver.UIUtils.UIUtils;
 import com.launcher.mummu.driver.service.GPSService;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  * Created by muhammed on 2/16/2017.
@@ -86,12 +84,18 @@ public class MainActivity extends Container implements OnMapReadyCallback, GPSSe
             bindService(intent, mServiceConnection,
                     Context.BIND_AUTO_CREATE);
         }
+
+
         super.onResume();
     }
 
     @Override
     protected void onPause() {
-        unbindService(mServiceConnection);
+        try {
+            unbindService(mServiceConnection);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
         super.onPause();
     }
 
@@ -128,27 +132,20 @@ public class MainActivity extends Container implements OnMapReadyCallback, GPSSe
 
     @Override
     public void onLocationChanged(Location location) {
+        googleMap.clear();
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
         MarkerOptions here = new MarkerOptions().position(latLng).title("Here").icon(BitmapDescriptorFactory.defaultMarker());
         googleMap.addMarker(here);
-
         sendToServer(location);
+
     }
 
     private void sendToServer(Location location) {
         FirebaseDatabase firebaseInstance = DriverApp.getFirebaseInstance();
-        DatabaseReference referenceFromUrl = firebaseInstance.getReference("main");
-        JSONObject mainObject = new JSONObject();
-        JSONObject locationJsonObject = new JSONObject();
-        try {
-            locationJsonObject.put("lat", location.getLatitude());
-            locationJsonObject.put("long", location.getLongitude());
-            mainObject.put("location", locationJsonObject);
-            mainObject.put("time", System.currentTimeMillis());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        referenceFromUrl.setValue(mainObject);
+        DatabaseReference referenceFromUrl = firebaseInstance.getReferenceFromUrl(FireBaseUtils.FIREBASE_URL);
+        DatabaseReference main = referenceFromUrl.child(FireBaseUtils.MAIN_TAG);
+        DatabaseReference locationMain = main.child(FireBaseUtils.LOCATION_TAG);
+        locationMain.child(FireBaseUtils.LATITUDE_TAG).setValue(location.getLatitude());
+        locationMain.child(FireBaseUtils.LONGITUDE_TAG).setValue(location.getLongitude());
     }
 }
