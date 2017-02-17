@@ -84,8 +84,6 @@ public class MainActivity extends Container implements OnMapReadyCallback, GPSSe
             bindService(intent, mServiceConnection,
                     Context.BIND_AUTO_CREATE);
         }
-
-
         super.onResume();
     }
 
