@@ -22,7 +22,12 @@ public class Splash extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+//                if (CabStorageUtil.isLogged(Splash.this, CabStorageUtil.IS_LOGGED)) {
                 startActivity(new Intent(Splash.this, MainActivity.class));
+//                } else {
+//                    startActivity(new Intent(Splash.this, LoginActivity.class));
+//                }
+
                 finish();
             }
         }, 1000 * 3);

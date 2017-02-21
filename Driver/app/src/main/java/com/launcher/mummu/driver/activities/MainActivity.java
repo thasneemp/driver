@@ -69,6 +69,7 @@ public class MainActivity extends Container implements OnMapReadyCallback, GPSSe
         fragmentTransaction.add(R.id.container, mMapFragment);
         fragmentTransaction.commit();
         mMapFragment.getMapAsync(this);
+
     }
 
     @Override
@@ -84,6 +85,7 @@ public class MainActivity extends Container implements OnMapReadyCallback, GPSSe
             bindService(intent, mServiceConnection,
                     Context.BIND_AUTO_CREATE);
         }
+
         super.onResume();
     }
 
@@ -104,6 +106,13 @@ public class MainActivity extends Container implements OnMapReadyCallback, GPSSe
 
 //        googleMap.addMarker(new MarkerOptions())
         enableLocation();
+
+//        googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+//            @Override
+//            public void onMapClick(LatLng latLng) {
+//                sendToServer(latLng);
+//            }
+//        });
     }
 
     private void enableLocation() {
@@ -132,13 +141,6 @@ public class MainActivity extends Container implements OnMapReadyCallback, GPSSe
     public void onLocationChanged(Location location) {
         googleMap.clear();
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-
-//        googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-//            @Override
-//            public void onMapClick(LatLng latLng) {
-//                sendToServer(latLng);
-//            }
-//        });
         sendToServer(latLng);
 
     }

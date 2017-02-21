@@ -15,13 +15,43 @@
       },
       "oauth_client": [
         {
-          "client_id": "440657394065-leqsdkriehu0soffaq1hsigg41uf36ou.apps.googleusercontent.com",
-          "client_type": 3
+          "client_id": "440657394065-2gvbkinc405r8rspuhoakiuok8h878o1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.launcher.mummu.driver",
+            "certificate_hash": "6DF4E2A2FB857DEA304F40794695655A55497D19"
+          }
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBKo3mZXhX2hCSNbCKI4JAejs6W2plI_mg"
+          "current_key": "AIzaSyC12kTpoJdI-vMov2QJw7bUnYIojZ_v_V0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:440657394065:android:a5e85c0be9f2b067",
+        "android_client_info": {
+          "package_name": "com.launcher.mummu.cabclient"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC12kTpoJdI-vMov2QJw7bUnYIojZ_v_V0"
         }
       ],
       "services": {

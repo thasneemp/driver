@@ -25,6 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.LoginActivity" />
 
         <service android:name=".service.GPSService" />
 
