@@ -68,7 +68,7 @@ public class LoginActivity extends Container implements View.OnClickListener, Go
         mAuth = FirebaseAuth.getInstance();
         mAuth.addAuthStateListener(mAuthListener);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("440657394065-2gvbkinc405r8rspuhoakiuok8h878o1.apps.googleusercontent.com")
+                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
         if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
@@ -85,6 +85,8 @@ public class LoginActivity extends Container implements View.OnClickListener, Go
     protected void onStop() {
         if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
+            mGoogleApiClient.stopAutoManage(this);
+            mGoogleApiClient.disconnect();
         }
         super.onStop();
     }

@@ -9,5 +9,5 @@ public class FireBaseUtils {
     public static final String LOCATION_TAG = "location";
     public static final String LATITUDE_TAG = "lat";
     public static final String LONGITUDE_TAG = "long";
-    public static final String FIREBASE_URL = "https://claysyscabdriver-1487227135716.firebaseio.com/";
+    public static final String FIREBASE_URL = "https://claysysprojects.firebaseio.com/";
 }

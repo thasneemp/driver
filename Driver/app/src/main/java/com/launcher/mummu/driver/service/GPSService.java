@@ -61,8 +61,6 @@ public class GPSService extends Service implements GoogleApiClient.ConnectionCal
                         .addApi(LocationServices.API)
                         .build();
                 mGoogleApiClient.connect();
-
-
             }
 
         }

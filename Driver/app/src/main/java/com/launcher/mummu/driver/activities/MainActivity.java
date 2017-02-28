@@ -28,6 +28,7 @@ import com.launcher.mummu.driver.DriverApp;
 import com.launcher.mummu.driver.R;
 import com.launcher.mummu.driver.UIUtils.FireBaseUtils;
 import com.launcher.mummu.driver.UIUtils.UIUtils;
+import com.launcher.mummu.driver.models.LocationModel;
 import com.launcher.mummu.driver.service.GPSService;
 
 /**
@@ -45,7 +46,6 @@ public class MainActivity extends Container implements OnMapReadyCallback, GPSSe
             GPSService.MyBinder myBinder = (GPSService.MyBinder) service;
             GPSService gpsService = myBinder.getService();
             gpsService.setOnLocationListener(MainActivity.this);
-
         }
 
         @Override
@@ -118,10 +118,9 @@ public class MainActivity extends Container implements OnMapReadyCallback, GPSSe
     private void enableLocation() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                googleMap.setMyLocationEnabled(true);
-                return;
-            } else {
                 requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_REQUEST);
+            } else {
+                googleMap.setMyLocationEnabled(true);
             }
         } else {
             googleMap.setMyLocationEnabled(true);
@@ -141,18 +140,22 @@ public class MainActivity extends Container implements OnMapReadyCallback, GPSSe
     public void onLocationChanged(Location location) {
         googleMap.clear();
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-        sendToServer(latLng);
+        sendToServer(latLng, location.getBearing());
 
     }
 
-    private void sendToServer(LatLng location) {
+    private void sendToServer(LatLng location, float bearing) {
         MarkerOptions here = new MarkerOptions().position(location).title("Here").icon(BitmapDescriptorFactory.defaultMarker());
         googleMap.addMarker(here);
         FirebaseDatabase firebaseInstance = DriverApp.getFirebaseInstance();
         DatabaseReference referenceFromUrl = firebaseInstance.getReferenceFromUrl(FireBaseUtils.FIREBASE_URL);
         DatabaseReference main = referenceFromUrl.child(FireBaseUtils.MAIN_TAG);
         DatabaseReference locationMain = main.child(FireBaseUtils.LOCATION_TAG);
-        locationMain.child(FireBaseUtils.LATITUDE_TAG).setValue(location.latitude);
-        locationMain.child(FireBaseUtils.LONGITUDE_TAG).setValue(location.longitude);
+        LocationModel locationModel = new LocationModel();
+
+        locationModel.setLat(location.latitude);
+        locationModel.setLonge(location.longitude);
+        locationModel.setBearing(bearing);
+        locationMain.setValue(locationModel);
     }
 }

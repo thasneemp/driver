@@ -1,31 +1,43 @@
 {
   "project_info": {
-    "project_number": "440657394065",
-    "firebase_url": "https://claysyscabdriver-1487227135716.firebaseio.com",
-    "project_id": "claysyscabdriver-1487227135716",
-    "storage_bucket": "claysyscabdriver-1487227135716.appspot.com"
+    "project_number": "705139551144",
+    "firebase_url": "https://claysysprojects.firebaseio.com",
+    "project_id": "claysysprojects",
+    "storage_bucket": "claysysprojects.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:440657394065:android:21f99d2897a375f6",
+        "mobilesdk_app_id": "1:705139551144:android:21f99d2897a375f6",
         "android_client_info": {
           "package_name": "com.launcher.mummu.driver"
         }
       },
       "oauth_client": [
         {
-          "client_id": "440657394065-2gvbkinc405r8rspuhoakiuok8h878o1.apps.googleusercontent.com",
+          "client_id": "705139551144-km82h0hv1gath7raq94v21ss4se4lrji.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.launcher.mummu.driver",
-            "certificate_hash": "6DF4E2A2FB857DEA304F40794695655A55497D19"
+            "certificate_hash": "6df4e2a2fb857dea304f40794695655a55497d19"
           }
+        },
+        {
+          "client_id": "705139551144-p409arilaq0eq8gbk4t57o4tshi3apb2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.launcher.mummu.driver",
+            "certificate_hash": "c033e8251fd7b6dd64d3f059d97871acb5f0e1e8"
+          }
+        },
+        {
+          "client_id": "705139551144-4549tpfaqahv7s1ktf0p7p5rgr3vrjjr.apps.googleusercontent.com",
+          "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC12kTpoJdI-vMov2QJw7bUnYIojZ_v_V0"
+          "current_key": "AIzaSyDtDcJyRJ323G4JLPSgNVCJBauMhLX4WsY"
         }
       ],
       "services": {
@@ -34,33 +46,12 @@
         },
         "appinvite_service": {
           "status": 2,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:440657394065:android:a5e85c0be9f2b067",
-        "android_client_info": {
-          "package_name": "com.launcher.mummu.cabclient"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyC12kTpoJdI-vMov2QJw7bUnYIojZ_v_V0"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "705139551144-4549tpfaqahv7s1ktf0p7p5rgr3vrjjr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
