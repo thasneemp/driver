@@ -3,6 +3,7 @@ package com.launcher.mummu.driver.storage;
 import android.content.Context;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.launcher.mummu.driver.activities.MainActivity;
 
 /**
  * Created by muhammed on 2/20/2017.
@@ -16,6 +17,7 @@ public class CabStorageUtil {
     public static final String LOCATION_LAT = "location_lat";
     public static final String LOCATION_LONG = "location_long";
     public static final String LOCATION_LAT_LONG = "location_latlong";
+    private static final String IS_TRACKING_ENABLED = "is_tracking_enabled";
 
     public static void setUsername(Context context, String key, String value) {
         CabStorage.insertStringData(context, key, value);
@@ -55,5 +57,18 @@ public class CabStorageUtil {
 
         }
         return latLng;
+    }
+
+    public static void setTrackingEnabled(Context context, boolean value) {
+        CabStorage.insertBooleanData(context, IS_TRACKING_ENABLED, value);
+
+    }
+
+    public static boolean isTrackingEnabled(Context context) {
+        return CabStorage.getBooleanData(context, IS_TRACKING_ENABLED);
+    }
+
+    public static void clearData(Context context) {
+        CabStorage.clearData(context);
     }
 }

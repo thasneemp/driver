@@ -1,4 +1,4 @@
-package com.launcher.mummu.driver;
+package com.launcher.mummu.driver.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,8 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.launcher.mummu.driver.activities.LoginActivity;
-import com.launcher.mummu.driver.activities.MainActivity;
+import com.launcher.mummu.driver.R;
 import com.launcher.mummu.driver.storage.CabStorageUtil;
 
 public class Splash extends AppCompatActivity {
@@ -27,7 +26,7 @@ public class Splash extends AppCompatActivity {
                 if (CabStorageUtil.isLogged(Splash.this, CabStorageUtil.IS_LOGGED)) {
                     startActivity(new Intent(Splash.this, MainActivity.class));
                 } else {
-                    startActivity(new Intent(Splash.this, LoginActivity.class));
+                    startActivity(new Intent(Splash.this, LoginActivityCompact.class));
                 }
 
                 finish();

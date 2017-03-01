@@ -42,4 +42,8 @@ public class CabStorage {
     public static boolean getBooleanData(Context context, String key) {
         return getSharedPreference(context).getBoolean(key, false);
     }
+
+    public static void clearData(Context context) {
+        getSharedPreference(context).edit().clear().apply();
+    }
 }

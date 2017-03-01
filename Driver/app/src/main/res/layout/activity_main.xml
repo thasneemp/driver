@@ -3,9 +3,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <Button
+        android:id="@+id/enableDisableButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+
+        android:background="@drawable/bus_button_selector"
+        android:text="Enable"
+        android:textColor="@color/white" />
+
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+        android:layout_height="match_parent"
+        android:layout_above="@id/enableDisableButton"
+        android:layout_below="@id/toolbar">
+
+
+    </FrameLayout>
+
 
 </RelativeLayout>

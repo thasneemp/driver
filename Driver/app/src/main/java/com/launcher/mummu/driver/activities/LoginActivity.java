@@ -28,7 +28,7 @@ import com.launcher.mummu.driver.storage.CabStorageUtil;
 /**
  * Created by muhammed on 2/20/2017.
  */
-
+@Deprecated
 public class LoginActivity extends Container implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
     private static final int RC_SIGN_IN = 10214;
 
@@ -137,7 +137,7 @@ public class LoginActivity extends Container implements View.OnClickListener, Go
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(LoginActivity.this, "Authentication Succes",
+                            Toast.makeText(LoginActivity.this, "Authentication Success",
                                     Toast.LENGTH_SHORT).show();
                             CabStorageUtil.setUsername(LoginActivity.this, CabStorageUtil.USER_NAME, task.getResult().getUser().getEmail());
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
