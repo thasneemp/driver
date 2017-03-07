@@ -47,8 +47,9 @@ import com.launcher.mummu.driver.storage.CabStorageUtil;
 
 public class MainActivity extends Container implements OnMapReadyCallback, GPSService.OnLocationChange, View.OnClickListener {
     private static final int PERMISSION_REQUEST = 100;
-    private static final double LAT_START = 10.007489;
-    private static final double LONG_START = 76.360659;
+    private static final double LAT_START = 10.007151;
+    private static final double LONG_START = 76.359910;
+    private static final float DEFAULT_BEARING = 30f;
     private MapFragment mMapFragment;
     private GoogleMap googleMap;
     private Button mEnableDisableButton;
@@ -170,16 +171,15 @@ public class MainActivity extends Container implements OnMapReadyCallback, GPSSe
     public void onLocationChanged(Location location) {
         googleMap.clear();
         if (CabStorageUtil.isTrackingEnabled(this)) {
-            LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-            sendToServer(latLng, location.getBearing());
+            sendToServer(true, new LatLng(location.getLatitude(), location.getLongitude()), location.getBearing());
         } else {
-            LatLng latLng = new LatLng(LAT_START, LONG_START);
-            sendToServer(latLng, location.getBearing());
+
+            sendToServer(false, new LatLng(LAT_START, LONG_START), DEFAULT_BEARING);
         }
 
     }
 
-    private void sendToServer(LatLng location, float bearing) {
+    private void sendToServer(boolean b, LatLng location, float bearing) {
         MarkerOptions here = new MarkerOptions().position(location).title("Here").icon(BitmapDescriptorFactory.fromResource(R.drawable.bus_logo));
         here.rotation(bearing);
         googleMap.addMarker(here);
@@ -192,6 +192,8 @@ public class MainActivity extends Container implements OnMapReadyCallback, GPSSe
         locationModel.setLat(location.latitude);
         locationModel.setLonge(location.longitude);
         locationModel.setBearing(bearing);
+        locationModel.setEnable(b);
+        locationModel.setMessage("");
         locationMain.setValue(locationModel);
     }
 
